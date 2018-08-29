@@ -1,0 +1,49 @@
+/*
+    Author  : FELIPECORREAGOMES
+*/
+
+@import url(font.css);
+@import url(menu.css);
+@import url(bloco.css);
+@import url(corpo-ini.css);
+@import url(rod.css);
+
+body{
+	font-family:courier;
+	background-color:transparent;
+	padding: 0em 0em 0em 0em;
+	margin: 0em 0em 0em 0em;
+}
+
+.info{
+    vertical-align: middle;
+    width:12px;
+}
+
+#fundo-p{
+	width:100%;
+	height:430px;
+	border: solid 0px #000;
+	margin: none;
+	padding:0px;
+	
+}
+
+#fundo-ps{
+	width:100%;
+	height:90px;
+	border: solid 0px #111;
+	margin: 0px -1px 0px 0px;
+	padding:0px;
+}
+
+a:link{
+	color:#111;
+}
+
+a:visited{
+	color:#222;
+}
+/*
+coca-3840x2160.jpg
+*/

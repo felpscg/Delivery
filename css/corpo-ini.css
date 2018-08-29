@@ -1,0 +1,19 @@
+/*
+    Author  : FELIPECORREAGOMES
+*/
+
+
+#f-corpo{
+	background:linear-gradient(rgba(255,255,255,1),rgba(255,255,255,1), rgba(87,0,0,0.8));
+	min-height:500px;
+}
+
+
+.corpo{
+	position:relative;
+	left:50%;
+	width:70%;
+	margin-left:-35%;
+	background-color:#fff;
+	height:500px;
+}

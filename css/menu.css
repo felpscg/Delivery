@@ -1,0 +1,63 @@
+/*
+    Author  : FELIPECORREAGOMES
+*/
+
+#menu{
+    position:fixed;
+	
+	right:5%;
+	margin-top:-2em;
+}
+li.menu-it{
+        float: left;
+		list-style-type: none;
+		padding: 0em 0.56em 0em 0.56em;
+		background-color: #ccc;
+
+}
+.img-d{
+	margin-left:1em;
+	margin-top:0.2em;
+width:70px;	
+	
+	
+}
+
+.img-dm{
+	width:520px;
+}
+.degrade{
+	background: linear-gradient(rgba(123,0,0,.5), rgba(255,255,255,.1));
+	/*opacity:0.5;
+    -moz-opacity: 0.5;
+    filter: alpha(opacity=50);*/
+}
+.menu-it:hover,#bt-log:hover{
+	transition:all 0.2s ease;
+	background-color: #bbb;
+	color:#fff;
+	opacity:1;
+}
+.img-fundo{
+	position:absolute;
+	width:100%;
+	z-index: -5;
+	opacity:0.8;
+	
+	
+}
+
+#bt-log{
+	padding: 0em 0.56em 0em 0.56em;
+	position:relative;
+	float:right;
+	margin-top:-30px;
+	background-color: #fcc;
+}
+
+.ativo{
+	margin-top:-3px;
+	color:#570000;
+	border-top: solid 3px #500;
+	border-bottom: solid 3px #500;
+}
