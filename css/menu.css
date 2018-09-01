@@ -20,17 +20,39 @@ li.menu-it{
 }
 
 .img-d{
+    position: fixed;
+    float:left;        
     margin-left:1em;
     margin-top:0.2em;
     width:70px;	
+    display: block;
+    z-index: 10;
+    transition: all 0.4s ease ;
 }
 
 .img-dm{
+    position: fixed;
+    top: 2em;
+    margin-left: auto;
+    left:7em;
+    float:left; 
     width:520px;
+    display: block;
+    z-index: 10;
+    transition: all 0.4s ease ;
 }
 
-.degrade{
+/*.degradefixo{
+    position: fixed;
+    
+}*/
+
+
+.degradem{
+    position: fixed;
     background: linear-gradient(rgba(123,0,0,.5), rgba(255,255,255,.1));
+    z-index: 10;
+    transition: all 0.4s ease ;
     /*opacity:0.5;
 -moz-opacity: 0.5;
 filter: alpha(opacity=50);*/

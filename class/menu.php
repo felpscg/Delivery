@@ -50,9 +50,10 @@ class menu {
 
         echo "
         $imgF
-    	<div id='fundo-ps'class='degrade'>
-    	<img class='img-d' src='$this->localLogo'/>
-    	<img class='img-dm' src='$this->localNome'/>
+            <div id='fundo-ps'class='degradefixo'>
+    	<div id='fundo-psf'class='degradem'>
+    	<img id='img-d' class='img-d' src='$this->localLogo'/>
+    	<img id='img-dm'class='img-dm' src='$this->localNome'/>
 
         <div id='menu'>
     	<a href='' id='bt-log'>login</a>
@@ -64,7 +65,8 @@ class menu {
             </ul>
 
         </div>
-    	</div>";
+    	</div>"
+                . "</div>";
         return;
     }
 
