@@ -7,7 +7,7 @@ window.onscroll = function () {
     var menuIcon = document.getElementById("img-d").style;
     var menuIconM = document.getElementById("img-dm").style;
     var fundoDegrade = document.getElementById("fundo-psf").style;
-    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80 && prevScrollpos > currentScrollPos) {
+    if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60 && prevScrollpos > currentScrollPos) {
         menuR.top = "35px";
         menuIcon.width = "30px";
         menuIconM.width = "auto";
