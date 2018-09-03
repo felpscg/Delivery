@@ -1,13 +1,13 @@
 var prevScrollpos = window.pageYOffset;
 
-//quando ele não encontra o elemento ele executa a função parcialmente e trava
+//quando ele nÃ£o encontra o elemento ele executa a funÃ§Ã£o parcialmente e trava
 window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
     var menuR = document.getElementById("menu").style;
     var menuIcon = document.getElementById("img-d").style;
     var menuIconM = document.getElementById("img-dm").style;
     var fundoDegrade = document.getElementById("fundo-psf").style;
-    if (document.body.scrollTop > 60 || document.documentElement.scrollTop > 60 && prevScrollpos > currentScrollPos) {
+    if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40 && prevScrollpos > currentScrollPos) {
         menuR.top = "35px";
         menuIcon.width = "30px";
         menuIconM.width = "auto";
@@ -15,6 +15,8 @@ window.onscroll = function () {
         menuIconM.top = "0.3em";
         menuIconM.left = "3.2em";
         fundoDegrade.background = "#fff";
+        fundoDegrade.borderBottom = "solid 20px #000 !important";
+        
         fundoDegrade.height = "40px";
 
     } else {
