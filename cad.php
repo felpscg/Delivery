@@ -17,10 +17,26 @@
         <?php
         require_once './class/menu.php';
         ?>
+                <?php
+        session_start();
+        if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+            unset($_SESSION['login']);
+            unset($_SESSION['senha']);
+//            return header('location:login.php');
+        }
+        elseif(($_SESSION['login']) and ( $_SESSION['senha'])){
+            $logado ="beeeemmmm vindo". $_SESSION['login'];
+        }
+        else
+            $logado="";
+        
+        ?>
     </head>
 
     <body>
-        
+        <?php
+        echo $logado;
+        ?>
             <?php
             $obj = new menu();
             $obj->ativoMenu(1);
@@ -30,7 +46,7 @@
 <!--2 O endereço deverá conter os seguintes campos: Rua*, Número*, CEP*, bairro*, cidade*, UF*, complemento.-->
         <div id="f-corpo">
             <div class="corpo">
-                <form method="POST" enctype="multipart/form-data" action="">
+                <form method="POST" action="class/cadastrarCliente.php">
                     <fieldset class="cad"><legend><h2>Cadastro</h2></legend>
                         <p>
                             Nome:*

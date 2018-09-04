@@ -8,7 +8,7 @@ class menu {
 
     function ativoMenu($valorAtivo) {
         $imgF = "<img class='img-fundo' src='$this->imgFundoPrinc'/>";
-        $valAtv = array("", "", "", "");
+        $valAtv = array("", "", "", "","");
         if ($valorAtivo != 0)
             $imgF = NULL;
         switch ($valorAtivo) {
@@ -34,8 +34,8 @@ class menu {
                 break;
 
             case 4:
-                $valAtv[3] = "ativo";
-                //perfil
+                $valAtv[4] = "ativo";
+                //logar
                 break;
 
             /*      case 5:
@@ -56,7 +56,7 @@ class menu {
     	<img id='img-dm'class='img-dm' src='$this->localNome'/>
 
         <div id='menu'>
-    	<a href='' id='bt-log'>login</a>
+    	<a href='login.php' id='bt-log' class='$valAtv[4]'>login</a>
             <ul>
                 <a href='index.php'><li class='menu-it $valAtv[0]'>Inicio</li></a>
                 <a href='cad.php'><li class='menu-it $valAtv[1]'>Cadastrar</li></a>

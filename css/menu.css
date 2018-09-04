@@ -9,6 +9,9 @@
     margin-top:-2em;
     z-index: 5;
     transition: all 0.4s ease ;
+    min-width: 35%;
+    margin-right: -2%;
+    min-height: 50px;
 }
 
 li.menu-it{
