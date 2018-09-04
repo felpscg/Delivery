@@ -17,29 +17,22 @@
         <?php
         require_once './class/menu.php';
         ?>
-                <?php
-        session_start();
-        if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-            unset($_SESSION['login']);
-            unset($_SESSION['senha']);
-//            return header('location:login.php');
-        }
-        elseif(($_SESSION['login']) and ( $_SESSION['senha'])){
-            $logado ="beeeemmmm vindo". $_SESSION['login'];
-        }
-        else
-            $logado="";
         
-        ?>
     </head>
 
     <body>
-        <?php
-        echo $logado;
-        ?>
+        
             <?php
+            session_start();
+            session_unset($_SESSION["login"]);
+            session_destroy();
+            
             $obj = new menu();
             $obj->ativoMenu(1);
+            session_start();
+            foreach ($_SESSION as $key => $value) {
+    echo $_SESSION[$key];
+}
             ?>
         
 

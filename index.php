@@ -14,28 +14,12 @@
         <?php
         require_once './class/menu.php';
         ?>
-        <?php
-        session_start();
-        if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-            unset($_SESSION['login']);
-            unset($_SESSION['senha']);
-//            return header('location:login.php');
-        }
-        elseif(($_SESSION['login']) and ( $_SESSION['senha'])){
-            $logado ="beeeemmmm vindo". $_SESSION['login'];
-        }
-        else
-            $logado="";
         
-        ?>
-
     </head>
 
     <body>
         <div id="fundo-p">
-            <?php
-  echo "$logado";
-  ?>
+            
             <?php
             $obj = new menu();
             $obj->ativoMenu(0);
