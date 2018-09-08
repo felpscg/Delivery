@@ -5,6 +5,7 @@
 #bloco-e{
     position:relative;
 	left:50%;
+        margin-top: 0.1em;
     top:20px;
 	margin-left:-35%;
 	width:70%;
