@@ -1,17 +1,18 @@
 <?php
+
 /**
  * @name            : conBD
  * @since           : 07/09/2018
  * @author          : felipecg
-
  */
+
 class conBD {
     
     private $conexao;
     private $host="127.0.0.1";
     private $key="";
     private $userbd="root";
-    private $bd="";
+    private $bd="bddelivery";
     function getConexao() {
         return $this->conexao;
     }
@@ -44,5 +45,4 @@ class conBD {
     }
             
 }
-
 //fim classe conBD
