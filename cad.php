@@ -151,8 +151,7 @@
                                     <li>Bairro (Jd):*</li>
                                     <li>Cidade:*</li>
                                     <li>UF:*</li>
-                                    <li>Login:*</li>
-                                    <li>Senha:*</li>
+
                                 </ul>
                             </div>
                             <div class="campos">
@@ -196,10 +195,19 @@
 
                                 </ul>
                             </div>
-
                         </fieldset>
-
-
+                        <div class="n-campos">
+                            <ul>
+                                <li>Senha:*</li>
+                            </ul>
+                        </div>
+                        <div class="campos">
+                            <ul>
+                                <li>
+                                    <input name="senha" type="text"/>
+                                </li>
+                            </ul>
+                        </div>
                         <p>
 
                             <input type="submit"  value="Avançar"/>
