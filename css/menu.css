@@ -1,7 +1,18 @@
 /*
     Author  : FELIPECORREAGOMES
 */
+#nome-u{
+    position:absolute;
+    font-size: 1.2em;
+    top:35px;
+    right:15%;
+    margin-top:0em;
+    z-index: 5;
+    transition: all 0.4s ease ;
 
+    margin-right: -2%;
+
+}
 #menu{
     position:fixed;
     top:87px;
