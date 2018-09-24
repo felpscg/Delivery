@@ -27,7 +27,7 @@ window.onscroll = function () {
         menuIconM.width="520px";
         menuIconM.top="2em";
         menuIconM.left = "7em";
-        fundoDegrade.background = "linear-gradient(rgba(123,0,0,.5), rgba(255,255,255,.1))";
+        fundoDegrade.background = "linear-gradient(rgba(20,0,0,.5), rgba(255,255,255,.1))";
         fundoDegrade.height = "90px";
     }
     prevScrollpos = currentScrollPos;

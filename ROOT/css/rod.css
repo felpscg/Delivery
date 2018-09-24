@@ -1,0 +1,18 @@
+/*
+    Author  : FELIPECORREAGOMES
+*/
+
+.rodape{
+	position:relative;
+	left:none;
+	width:100%;
+	margin-left:none;
+	background-color:transparent;
+	height:150px;
+	font-size:0.7em;
+	text-align:center;
+}
+div.textrod{
+	position:absolute;
+	bottom:0;
+}

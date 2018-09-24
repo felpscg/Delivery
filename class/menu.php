@@ -137,8 +137,8 @@ class menu {
         $btLog = $this->getBtLog();
         echo "
         $imgF
-            <div id='fundo-ps'class='degradefixo'>
-    	<div id='fundo-psf'class='degradem'>
+            <div id='fundo-ps' class='degradefixo'>
+    	<div id='fundo-psf' class='degradem'>
     	<img id='img-d' class='img-d' src='$this->localLogo'/>
     	<img id='img-dm'class='img-dm' src='$this->localNome'/>
 

@@ -1,0 +1,43 @@
+/* 
+    Author     : FELIPECORREAGOMES
+*/
+
+@font-face{
+	font-family:"verdana";
+	src: url(../font/verdana.ttf);
+}
+@font-face{
+	font-family:"courier";
+	src: url("../font/cour.ttf");
+}
+
+@font-face{
+	font-family:"comfortaa";
+	src: url("../font/comfortaa.ttf");
+}
+/*@font-face{
+	font-family:"bebedera";
+	src: url("../font/bebedera.ttf");
+}
+@font-face{
+	font-family:"hack";
+	src: url("../font/HACKED.ttf");
+}
+@font-face{
+	font-family:"arialrmt";
+	src: url("../font/ARLRDBD.TTF");
+}
+
+@font-face{
+	font-family:"abz";
+	src: url("../font/abeezee.otf");
+}
+
+
+h1{
+font-family:hack;
+		color:#00f !important;
+		font-size:1.7em;
+		top:30px;
+		left:10%;
+}*/

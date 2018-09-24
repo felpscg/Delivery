@@ -24,12 +24,12 @@
         
             <?php
             session_start();
-            session_unset($_SESSION["login"]);
+            //session_unset($_SESSION["login"]);
             session_destroy();
             
             $obj = new menu();
             $obj->ativoMenu(1);
-            session_start();
+            //session_start();
             foreach ($_SESSION as $key => $value) {
     echo $_SESSION[$key];
 }

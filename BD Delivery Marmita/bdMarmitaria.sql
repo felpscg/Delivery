@@ -8,23 +8,23 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema bdMarmita
+-- Schema bddelivery
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema bdMarmita
+-- Schema bddelivery
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `bdMarmita` DEFAULT CHARACTER SET utf8 ;
-USE `bdMarmita` ;
+CREATE SCHEMA IF NOT EXISTS `bddelivery` DEFAULT CHARACTER SET utf8 ;
+USE `bddelivery` ;
 
 -- -----------------------------------------------------
--- Table `bdMarmita`.`endereco`
+-- Table `bddelivery`.`endereco`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdMarmita`.`endereco` (
+CREATE TABLE IF NOT EXISTS `bddelivery`.`endereco` (
   `cidade` VARCHAR(45) NOT NULL,
   `bairro` VARCHAR(45) NOT NULL,
   `rua` VARCHAR(45) NOT NULL,
-  `numero_rua` VARCHAR(45) NOT NULL,
+  `numero` VARCHAR(45) NOT NULL,
   `estado` VARCHAR(45) NOT NULL,
   `cep` VARCHAR(45) NOT NULL,
   `cliente_end` INT NOT NULL,
@@ -33,9 +33,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bdMarmita`.`clientes`
+-- Table `bddelivery`.`clientes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdMarmita`.`clientes` (
+CREATE TABLE IF NOT EXISTS `bddelivery`.`clientes` (
   `cod_clientes` INT NOT NULL AUTO_INCREMENT,
   `nome_cliente` VARCHAR(45) NOT NULL,
   `rg` VARCHAR(45) NOT NULL,
@@ -52,16 +52,16 @@ CREATE TABLE IF NOT EXISTS `bdMarmita`.`clientes` (
   INDEX `endereco_idx` (`endereco` ASC),
   CONSTRAINT `endereco`
     FOREIGN KEY (`endereco`)
-    REFERENCES `bdMarmita`.`endereco` (`cliente_end`)
+    REFERENCES `bddelivery`.`endereco` (`cliente_end`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bdMarmita`.`produtos`
+-- Table `bddelivery`.`produtos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdMarmita`.`produtos` (
+CREATE TABLE IF NOT EXISTS `bddelivery`.`produtos` (
   `cod_produtos` INT NOT NULL AUTO_INCREMENT,
   `nome_produto` VARCHAR(45) NOT NULL,
   `descricao_prod` TEXT(200) NOT NULL,
@@ -74,9 +74,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bdMarmita`.`vendas`
+-- Table `bddelivery`.`vendas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdMarmita`.`vendas` (
+CREATE TABLE IF NOT EXISTS `bddelivery`.`vendas` (
   `num_vendas` INT NOT NULL AUTO_INCREMENT,
   `data_venda` DATETIME NOT NULL,
   `qtd_produto` INT NOT NULL,
@@ -93,16 +93,16 @@ CREATE TABLE IF NOT EXISTS `bdMarmita`.`vendas` (
   INDEX `cliente_idx` (`cliente` ASC),
   CONSTRAINT `cliente`
     FOREIGN KEY (`cliente`)
-    REFERENCES `bdMarmita`.`clientes` (`cod_clientes`)
+    REFERENCES `bddelivery`.`clientes` (`cod_clientes`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bdMarmita`.`cardapio`
+-- Table `bddelivery`.`cardapio`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdMarmita`.`cardapio` (
+CREATE TABLE IF NOT EXISTS `bddelivery`.`cardapio` (
   `cod_cardapio` INT NOT NULL AUTO_INCREMENT,
   `produto1` INT NOT NULL,
   `produto2` INT NULL,
@@ -112,16 +112,16 @@ CREATE TABLE IF NOT EXISTS `bdMarmita`.`cardapio` (
   INDEX `produto1_idx` (`produto1` ASC, `produto2` ASC),
   CONSTRAINT `produto1`
     FOREIGN KEY (`produto1` , `produto2`)
-    REFERENCES `bdMarmita`.`produtos` (`cod_produtos` , `cod_produtos`)
+    REFERENCES `bddelivery`.`produtos` (`cod_produtos` , `cod_produtos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `bdMarmita`.`imagens`
+-- Table `bddelivery`.`imagens`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bdMarmita`.`imagens` (
+CREATE TABLE IF NOT EXISTS `bddelivery`.`imagens` (
   `cod_imagem` INT NOT NULL AUTO_INCREMENT,
   `tipo` VARCHAR(45) NOT NULL,
   `hex` BLOB NOT NULL,

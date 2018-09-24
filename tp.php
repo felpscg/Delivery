@@ -1,50 +1,72 @@
-<!------------------------------------>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport">
-        <!-- content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.2"-->
-        <link rel="shortcut icon" href="img/icon/icpr.png">
-        <title>teste</title>
+    <?php
+    require_once './temp/head.phtml';
+    require_once './temp/footer.phtml';
 
-        <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/truefalse.css">
+    new head();
+    ?>
+    <script>
+        function altform(valor) {
+            var formid = document.getElementById('action-perf');
+            var def = document.getElementById('def');
+            switch (valor) {
+                case 1:
+                    def.value = 3;
+                    formid.action = "class/clienteDAO.php";
+                    break;
+                case 2:
+                    def.value = 4;
+                    formid.action = "class/clienteDAO.php";
+                    break;
 
-        <!--JS-->
-        <!-- <link type="text/javascript" href="js/basic.js"> -->
-        <script type="text/javascript" src="js/basic.js" defer="defer"></script>
-        <script charset="utf-8" type="text/javascript" src="js/cep.js" defer="defer"></script>
 
-        <?php
-        require_once './class/menu.php';
-        ?>
-        <style>
-    
-            
-        </style>
-    </head>
+                default:
+                    alert('erro');
+                    break;
 
+            }
+        }
+    </script>
     <body>
-
         <?php
-//        session_start();
-//        session_destroy();
-//        session_abort();
-//        $obj = new menu();
-//        $obj->ativoMenu(1);
-//        session_start();
-//        foreach ($_SESSION as $key => $value) {
-//            echo $_SESSION[$key];
-//        }
+        $obj = new menu();
+        $obj->ativoMenu(5);
         ?>
 
 
-        <div class="float-cadc">
-        <p>Cadastro não efetuado pela ocorrencia de um</p><h1>Erro</h1>
-        <div class="float-c-bord" ></div>
-        <img src="./img/sucesso.png"/>
-        <a onClick="history.go(-1)" ><p >Voltar</p></a>
+        <!---->
+        <div id="f-corpo">
+            <div class="corpo">
+                <form id ="action-perf" class="action-perf" method="POST" action="#">
+                    <input type="hidden" value="" id="def" name="def"/>
+                    <div id="bt-altexc">
+                        <input value="Alterar" type="submit" onclick="altform(1);" id="alt" class="alt"/>
+                        <input value="Deletar" type="submit" onclick="altform(2);" id="exc" class="exc"/>
+                    </div>
+                    <div class="cad">
+                        <?php
+                        session_start();
+                        $templogin = $_SESSION['login'];
+                        if ($templogin == '' || $templogin == null) {
+                            session_abort();
+                            echo "Efetue o login";
+
+                            exit(0);
+                        }
+                        $_POST["def"] = 2;
+                        require_once './class/clienteDAO.php';
+
+                        session_abort();
+                        ?>
+
+                    </div>
+                </form>
+            </div>
+            <?php
+            new footer();
+            ?>
         </div>
+
+
     </body>
 </html>

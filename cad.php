@@ -34,7 +34,7 @@
 
         <!--2 O endereço deverá conter os seguintes campos: Rua*, Número*, CEP*, bairro*, cidade*, UF*, complemento.-->
         <div id="f-corpo">
-            <div class="corpo">
+            <div class="corpo" style="background-color: transparent !important;">
 
                 <form method="POST" action="class/cadastrarCliente.php">
                     <input type="hidden" name="def" value="1"/>
@@ -47,14 +47,14 @@
                                 <li>RG:</li>
                                 <li>Sexo:*</li>
                                 <li>Data de Nascimento:*</li>
-                                <li>Telefone:</li>
-                                <li>Celular:*</li>
+                                <li>Tel/Celular:*</li>
+                                <li>Tel/Celular:</li>
                                 <li>E-mail:</li>
                             </ul>
                         </div>
                         <div class="campos">
                             <ul>
-                                <li><input name="nome" type="text"/></li>
+                                <li><input name="nome" placeholder="" type="text"/></li>
                                 <li><input name="cpf" id="cpf" onblur="TestaCPF(this.value);" type="text"/></li>
                                 <li><input name="rg" type="text"/></li>
                                 <li>

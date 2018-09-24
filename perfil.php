@@ -16,7 +16,7 @@
 
         <?php
         require_once './class/menu.php';
-        require_once './class/cadastrarCliente.php';
+        
         ?>
     </head>
 
@@ -34,10 +34,9 @@
             <div class="corpo">
                 <form method="POST" action="class/cons.php">
                     <fieldset class="cad"><legend><h2>teste</h2></legend>
-
-
                         <?php
                         $_POST["def"] = 2;
+                        require_once './class/cadastrarCliente.php';
                         ?>
 
                     </fieldset>

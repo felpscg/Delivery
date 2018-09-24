@@ -16,13 +16,13 @@ body{
 }
 
 ::selection{
-background-color:#a44;
-color:#fff;
+    background-color:#a44;
+    color:#fff;
 }
 
 ::-moz-selection{
-background-color:#822;
-color:#fff;
+    background-color:#822;
+    color:#fff;
 }
 
 h1{
@@ -70,7 +70,7 @@ h4{
 #fundo-psf{
     width:100%;
     height:90px;
-/*    border: solid 0px #00f;*/
+    /*    border: solid 0px #00f;*/
     margin: 0px -1px 0px 0px;
     padding:0px;
 }
@@ -91,7 +91,7 @@ fieldset.cad{
     position: relative;
     display: block;
     border: solid 2px rgba(87,0,0,0.8);
-/*    padding: 0em auto 0.5em 1em;*/
+    /*    padding: 0em auto 0.5em 1em;*/
     margin-left: -50%;
     left:50%;
     width: 100%;
@@ -112,24 +112,25 @@ legend{
     letter-spacing: -1px;
 }
 input{
-border: solid 1px #500;
-padding: 6px 0.5em 5px 1em;
+    border: solid 1px #500;
+    padding: 6px 0.5em 5px 1em;
 }
 
-/*
-input[type="number"] {
-    width: 100px;
-    max-width: 10%;
+
+input[type="submit"] {
+    width: 80px;
+    /*max-width: 10%;*/
+    cursor: pointer;
 }
-*/
+
 
 input[type="date"] {
     width: 200px;
-    max-width: 13%;
+    /*max-width: 13%;*/
 }
 input[type="time"] {
     width: 70px;
-    max-width: 10%;
+/*    max-width: 10%;*/
 }
 /*
 coca-3840x2160.jpg

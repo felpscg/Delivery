@@ -1,0 +1,136 @@
+/*
+    Author  : FELIPECORREAGOMES
+*/
+/*carregamento por etapas*/
+@import url(font.css);
+@import url(menu.css);
+@import url(bloco.css);
+@import url(corpo-ini.css);
+@import url(rod.css);
+
+body{
+    font-family:courier;
+    background-color:transparent;
+    padding: 0em 0em 0em 0em;
+    margin: 0em 0em 0em 0em;
+}
+
+::selection{
+background-color:#a44;
+color:#fff;
+}
+
+::-moz-selection{
+background-color:#822;
+color:#fff;
+}
+
+h1{
+    font-size: 2em;
+
+}
+
+h2{
+    font-size: 1.8em;
+
+}
+
+h3{
+    font-size: 1.6em;
+
+}
+
+h4{
+    font-size: 1.4em;
+
+}
+
+
+.info{
+    vertical-align: middle;
+    width:12px;
+}
+
+#fundo-p{
+    width:100%;
+    height:430px;
+    border: solid 0px #000;
+    margin: none;
+    padding:0px;
+
+}
+
+#fundo-ps{
+    width:100%;
+    height:90px;
+    border: solid 0px #111;
+    margin: 0px -1px 0px 0px;
+    padding:0px;
+}
+#fundo-psf{
+    width:100%;
+    height:90px;
+/*    border: solid 0px #00f;*/
+    margin: 0px -1px 0px 0px;
+    padding:0px;
+}
+
+a:link{
+    color:#111;
+}
+
+a:visited{
+    color:#222;
+}
+
+@media screen and (max-width: 960px) {
+
+
+}
+fieldset.cad{
+    position: relative;
+    display: block;
+    border: solid 2px rgba(87,0,0,0.8);
+/*    padding: 0em auto 0.5em 1em;*/
+    margin-left: -50%;
+    left:50%;
+    width: 100%;
+    background:rgba(255,255,255,1);
+}
+fieldset.cad-e{
+    position: relative;
+    display: block;
+    border: solid 1.6px rgb(100, 0, 0);
+    padding: 0em ;
+    margin-left: -50%;
+    left:50%;
+    width: 100%;
+    background:rgba(255,255,255,0);
+}
+legend{
+    margin-left: 1em;
+    letter-spacing: -1px;
+}
+input{
+border: solid 1px #500;
+padding: 6px 0.5em 5px 1em;
+}
+
+/*
+input[type="number"] {
+    width: 100px;
+    max-width: 10%;
+}
+*/
+
+input[type="date"] {
+    width: 200px;
+    max-width: 13%;
+}
+input[type="time"] {
+    width: 70px;
+    max-width: 10%;
+}
+/*
+coca-3840x2160.jpg
+*/

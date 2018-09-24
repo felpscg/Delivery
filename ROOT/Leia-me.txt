@@ -1,0 +1,7 @@
+Acesso para o administrador do sistema
+Tipos de tarefas
+	-	Cadastro de produtos
+	-	Cadastro de imagens para o sistema
+	-	Acesso aos Relatórios
+	-	Acesso aos registros
+	-	Acesso aos pedidos e vendas

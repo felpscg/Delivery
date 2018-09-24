@@ -10,8 +10,8 @@ class conBD {
     
     private $conexao;
     private $host="localhost";
-    private $key="Felipe@CG";
-    private $userbd="felpscg";
+    private $key="";
+    private $userbd="root";
 //    private $key="";
 //    private $userbd="root";
     private $bd="bddelivery";
@@ -42,6 +42,7 @@ class conBD {
         
     public function conBD() {
         $conTemp = mysqli_connect($this->getHost(), $this->getUserbd(), $this->getKey(), $this->getBd());
+        mysqli_set_charset($conTemp, "utf8");
         $this->setConexao($conTemp);
         return $this->getConexao();
     }
