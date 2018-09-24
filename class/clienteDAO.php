@@ -86,6 +86,49 @@ VALUES ";
             echo $query;
         }
     }
+    
+    
+    public function alterarCliente($conTemp) {
+        session_start();
+        require_once "./falha.php";
+        $falha = new falha();
+        //$this->validaEmail($conTemp);
+        $templogin = $_SESSION['login'];
+                $tempsenha = $_SESSION['senha'];
+                $senhamd5 = md5($tempsenha);
+        //$query2 = "INSERT INTO `bddelivery`.`cliente` 
+//(`nomecliente`, `rg`, `cpf`, `sexo`, `dtnasc`, `telefone`, `email`, `senha`,`endereco`) VALUES ";
+
+//Recebe funções de validação de CPF e E-mail
+//        $query .= $this->recebeValEnd($falha);
+        $vetvalores = $this->recebeValCliAlt($falha);
+$query = "UPDATE `cliente` SET `nomecliente`='$vetvalores[nome]', `rg`='$vetvalores[rg]',  `sexo`='$vetvalores[sexo]', `dtnasc`='$vetvalores[dtnasc]', `telefone`='$vetvalores[tel]', `email`='$vetvalores[email]' WHERE `email` = '$templogin' OR `cpf` = '$templogin' AND `senha`= '$senhamd5';";
+
+        sleep(2);
+//  Aguardar 2 seg para faser a consulta no BD, e lógo após da consulta verificar os erros
+        mysqli_query($conTemp, $query) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
+//        mysqli_query($conTemp, $query) or die("<h1>Erro interno</h1> <br>" + mysqli_error($conTemp));
+//        $query2 .= mysqli_insert_id($conTemp) . ")";
+//        mysqli_query($conTemp, $query2) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
+        
+        
+        
+        /////
+/////VERIFICAR SE LOGIN INCORRETO
+        /*
+
+         * verificar se uma linha foi alterada, se não exibir login incorreto, faça logout a conta e faça login novamente
+         *          */
+        
+        
+        $err = mysqli_error($conTemp);
+        if ($err == null || !$err) {
+            echo $query;
+        }
+        session_abort();
+    }
+    
+    
 
     // função para validar CPF e E-MAIL
     protected function validaCpfEmail($conTemp) {
@@ -98,9 +141,6 @@ VALUES ";
             $validacpf .= "'$cpf'";
             $validaemail = "SELECT email FROM `bddelivery`.`cliente` WHERE email = ";
             $validaemail .= "'$email'";
-
-
-
 //      echo $valida;
             $resultemail = mysqli_query($conTemp, $validaemail) or die($falha->err(2));
             $resultcpf = mysqli_query($conTemp, $validacpf) or die($falha->err(2));
@@ -115,8 +155,70 @@ VALUES ";
         echo "Preencha o CPF ou o E-mail";
         return;
     }
+    
+    protected function validaEmail($conTemp) {
+        require_once "./falha.php";
+        $falha = new falha();
+        $email = $_POST['email'];
+        if ( $email) {
+            $validaemail = "SELECT email FROM `bddelivery`.`cliente` WHERE email = ";
+            $validaemail .= "'$email'";
+            $resultemail = mysqli_query($conTemp, $validaemail) or die($falha->err(2));
+            if (mysqli_num_rows($resultemail) >= 1) {
+                echo '<H2>Erro:<H2><H1>E-mail ja cadastrado</H1>';
+                $falha->err(2);
+            } else {
+                $resultvalida = $resultemail;
+                return $resultvalida;
+            }
+        }
+        echo "Preencha o CPF ou o E-mail";
+        return;
+    }
+    protected function recebeValCliAlt($falha) {
+//  função que recebe todos os dados do formulario e valida se os campos obrigatórios foram preenchidos
+//        Função para retornar de acordo com o update
 
-    protected function recebeValCli($falha) {
+        foreach ($_POST as $key => $val) {
+
+            if ($_POST[$key] != NULL OR $_POST[$key] != "") {
+                $comando = "\$" . $key . "='" . $val . "';";
+                echo $comando . "<br>";
+
+                eval($comando);
+            }
+            if ($key == "senha") {// codifica a senha e guarda no banco
+                $senha = md5($_POST[$key]);
+            }
+        }
+
+
+        $tv = true;
+
+        /* se algum campo estiver nulo ele da erro por isso é necessario ignorar
+          com o @ e em seguida verificar cada posição do array
+         */
+
+        @$t = array($nome, $rg, $sexo, $dtnasc, $tel, $email);
+
+        foreach ($t as $key => $value) {
+            if ($value === "" || $value == null)
+                $tv = false;
+        }
+
+        $values = "";
+        if ($tv === true) {
+            $values = array ("nome"=>$nome, "rg"=>$rg, "sexo"=>$sexo, "dtnasc"=>$dtnasc, "tel"=>$tel,"email"=>$email);
+        } else {
+            $falha->err(4);
+
+            //sleep(10);
+            //header("Location: ../cad.php");
+        }
+        return $values;
+    }
+
+protected function recebeValCli($falha) {
 //  função que recebe todos os dados do formulario e valida se os campos obrigatórios foram preenchidos 
 
         foreach ($_POST as $key => $val) {
@@ -156,7 +258,8 @@ VALUES ";
         }
         return $values;
     }
-
+    
+    
     protected function recebeValEnd($falha) {
 
         foreach ($_POST as $key => $val) {

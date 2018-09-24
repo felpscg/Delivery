@@ -1,54 +1,72 @@
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport">
-        <!-- content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.2"-->
-        <link rel="shortcut icon" href="img/icon/icpr.png">
-        <title>teste</title>
+    <?php
+    require_once './temp/head.phtml';
+    require_once './temp/footer.phtml';
 
-        <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
+    new head();
+    ?>
+    <script>
+        function altform(valor) {
+            var formid = document.getElementById('action-perf');
+            var def = document.getElementById('def');
+            switch (valor) {
+                case 1:
+                    def.value = 3;
+                    formid.action = "class/clienteDAO.php";
+                    break;
+                case 2:
+                    def.value = 4;
+                    formid.action = "class/clienteDAO.php";
+                    break;
 
-        <!--JS-->
-        <!-- <link type="text/javascript" href="js/basic.js"> -->
-        <script type="text/javascript" src="js/basic.js" defer="defer"></script>
-        <script charset="utf-8" type="text/javascript" src="js/cep.js" defer="defer"></script>
 
-        <?php
-        require_once './class/menu.php';
-        
-        ?>
-    </head>
+                default:
+                    alert('erro');
+                    break;
 
+            }
+        }
+    </script>
     <body>
-
         <?php
         $obj = new menu();
         $obj->ativoMenu(5);
-        
         ?>
 
 
-        <!--2 O endereço deverá conter os seguintes campos: Rua*, Número*, CEP*, bairro*, cidade*, UF*, complemento.-->
+        <!---->
         <div id="f-corpo">
             <div class="corpo">
-                <form method="POST" action="class/cons.php">
-                    <fieldset class="cad"><legend><h2>teste</h2></legend>
+                <form id ="action-perf" class="action-perf" method="POST" action="#">
+                    <input type="hidden" value="" id="def" name="def"/>
+                    <div id="bt-altexc">
+                        <input value="Alterar" type="submit" onclick="altform(1);" id="alt" class="alt"/>
+                        <input value="Deletar" type="submit" onclick="altform(2);" id="exc" class="exc"/>
+                    </div>
+                    <div class="cad">
                         <?php
+                        session_start();
+                        $templogin = $_SESSION['login'];
+                        if ($templogin == '' || $templogin == null) {
+                            session_abort();
+                            echo "Efetue o login";
+
+                            exit(0);
+                        }
                         $_POST["def"] = 2;
-                        require_once './class/cadastrarCliente.php';
+                        require_once './class/clienteDAO.php';
+
+                        session_abort();
                         ?>
 
-                    </fieldset>
+                    </div>
                 </form>
             </div>
-            <div class="rodape">
-                <div class="textrod">
-                    <span>teste</span>
-                    <p>₢ - 2018</p>
-                </div>
-            </div>
+            <?php
+            new footer();
+            ?>
         </div>
+
 
     </body>
 </html>

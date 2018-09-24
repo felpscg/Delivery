@@ -36,7 +36,7 @@
         <div id="f-corpo">
             <div class="corpo" style="background-color: transparent !important;">
 
-                <form method="POST" action="class/cadastrarCliente.php">
+                <form method="POST" action="class/clienteDAO.php">
                     <input type="hidden" name="def" value="1"/>
                     <fieldset class="cad"><legend><h2>Cadastro</h2></legend>
 

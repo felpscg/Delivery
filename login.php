@@ -1,51 +1,40 @@
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport">
-		<!-- content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.2"-->
-        <link rel="shortcut icon" href="img/icon/icpr.png">
-        <title>teste</title>
+    <?php
+    require_once './temp/head.phtml';
+    require_once './temp/footer.phtml';
 
-        <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-
-        <!--JS-->
-        <!-- <link type="text/javascript" href="js/basic.js"> -->
-		<script type="text/javascript" src="js/basic.js" defer="defer"></script>
-		<script charset="utf-8" type="text/javascript" src="js/cep.js" defer="defer"></script>
-
-        <?php
-        require_once './class/menu.php';
-        ?>
+    new head();
+    ?>
     </head>
 
     <body>
-        
-            <?php
-            $obj = new menu();
-            $obj->ativoMenu(4);
-            ?>
-        
 
-<!--2 O endereço deverá conter os seguintes campos: Rua*, Número*, CEP*, bairro*, cidade*, UF*, complemento.-->
-        <div id="f-corpo">
-            <div class="corpo">
+        <?php
+        $obj = new menu();
+        $obj->ativoMenu(4);
+        ?>
+
+
+        <div id="f-corpo" >
+            <div class="corpo"style="background-color: transparent !important;">
                 <form method="POST" action="class/cons.php">
                     <fieldset class="cad"><legend><h2>Autenticar(LOGIN)</h2></legend>
-                        <p>
-                            E-mail:
-                            <input name="login"type="text"/>
-                        </p>
-                        <p>
-                            Senha:
-                            <input name="senha" type="password"/>
-                        </p>
 
-
-                        <p>
-                             
-                            <input type="submit" value="Avançar"/>
-                        </p>
+                        <div class='n-campos'>
+                            <ul>
+                                <li>E-mail: </li>
+                                <li>Senha: </li>
+                            </ul>
+                        </div>
+                        <div class='campos'>
+                            <ul>
+                                <li><input name="login"type="text"/></li>
+                                <li><input name="senha" type="password"/></li>
+                                <li><input type="submit" value="Avançar"/></li>
+                            </ul>
+                        </div>     
+                        
+                        
                     </fieldset>
                 </form>
             </div>

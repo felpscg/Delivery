@@ -53,7 +53,7 @@ class menu {
             $this->setBtLog($temp);
             return 1;
         } elseif ((isset($_SESSION['login']) == true) and ( isset($_SESSION['senha']) == true)) {
-            $nomeUser = $_SESSION['login'];
+            $nomeUser = $_SESSION['nome'];
 
             echo "<div id ='nome-u'>Bem Vindo $nomeUser</div>";
 
