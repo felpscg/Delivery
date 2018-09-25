@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * Description of sucesso:
  * Define o retorno da tela de sucesso e a respectiva mensagem
@@ -8,57 +7,67 @@
  * @author Felipe
  */
 class sucesso {
-    
+
 //    Função para erros de conexao, erros internos ou externos(Usuário)
 //    $classsuc define a seleção do erro e a mensagem
     public function suc($classsuc) {
         switch ($classsuc) {
 //            Classificassão dos erros de Conexao
-//            1 = Conexao com o BD
-//            2 = suco de sintaxe SQL
 //            
             case 1:
-                $this->efetuarCadastro($classsuc);
+                $this->efetuarCadastro();
                 break;
             case 2:
-                $this->alterarRegistro($classsuc);
+                $this->alterarRegistro();
                 break;
             case 3:
                 $this->deletarRegistro();
                 break;
-            case 4:
-//                Login();
-                break;
+//            case 4:
+//             Login();
+//                break;
             default:
                 break;
         }
     }
 
-    public function errocon($valerro) {
+    public function efetuarCadastro() {
 
-        $mens = "Ocorreu alguma falha </BR><a href=''>Relatar Problema</a>suco-> $valerro";
-        $this->base($mens);
+        $mens = "Ao efetuar o cadastro</BR>";
+        $link = '../login.php';
+        $mensLink = 'Login';
+        $this->base($mens, $link, $mensLink);
     }
 
-    public function cadrepetido() {
-        $mens = "CPF ou E-mail ja cadastrado";
-        $this->base($mens);
+    public function alterarRegistro() {
+        $mens = "Registro Alterado";
+        $link = '../login.php';
+        $mensLink = 'login';
+        $this->base($mens, $link, $mensLink);
+        session_start();
+        session_destroy();
+        session_abort();
     }
 
-    public function campoObg() {
-        $mens = "Retorne e preencha corretamente os campos obrigatórios";
-        $this->base($mens);
+    public function deletarRegistro() {
+        $mens = "Registro Excluido";
+        $link = '../index.php';
+        $mensLink = 'Página Inicial';
+        $this->base($mens, $link, $mensLink);
+        session_start();
+        session_destroy();
+        session_abort();
     }
 
-    public function base($mens) {
+    private function base($mens, $link = '', $mensLink = 'Proceguir') {
         $this->cabecalho();
         echo
         "<div class='float-cadc'>"
-        . "<h1>Seucesso</h1>"
+        . "<h1>Sucesso</h1>"
         . "<p>$mens</p>"
         . "<div class='float-c-bord' ></div>"
-        . "<img src='../img/falha.png'/>"
-        . "<a onClick='history.go(-1)' ><p >Voltar</p></a>"
+        . "<img src='../img/sucesso.png'/>"
+        . "<a onClick='history.go(-1)' href='$link'><p >$mensLink</p></a>"
         . "</div>'";
         $this->rodape();
     }
@@ -88,4 +97,5 @@ class sucesso {
         exit(0);
 //        Exit necessario, pois a validação continua após identificar o erro
     }
+
 }

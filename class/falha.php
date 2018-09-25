@@ -28,6 +28,9 @@ class falha {
             case 4:
                 $this->campoObg();
                 break;
+            case 5:
+                $this->registroNulo();
+                break;
             default:
                 break;
         }
@@ -35,7 +38,12 @@ class falha {
 
     public function errocon($valerro) {
 // recarregar a pag tbm
-        $mens = "Ocorreu alguma falha </BR><a href=''>Relatar Problema</a>Erro-> $valerro";
+        $mens = "Ocorreu alguma falha </BR><a href=''>Relatar Problema</a><br>Erro-> $valerro";
+        $this->base($mens);
+    }
+    public function registroNulo() {
+// recarregar a pag tbm
+        $mens = "Registro não encontrado</BR>Talvez a conta solicitada não exista";
         $this->base($mens);
     }
 
@@ -56,7 +64,7 @@ class falha {
         . "<h1>Erro</h1>"
         . "<p>$mens</p>"
         . "<div class='float-c-bord' ></div>"
-        . "<img src='../img/falha.png'/>"
+        . "<img class='falha-suc' src='../img/falha.png'/>"
         . "<a onClick='history.go(-1)' ><p >Voltar</p></a>"
         . "</div>'";
         $this->rodape();

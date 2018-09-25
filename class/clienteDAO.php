@@ -63,7 +63,9 @@ class cadastrarcliente {
 
     public function incluirCliente($conTemp) {
         require_once "./falha.php";
+        require_once "./sucesso.php";
         $falha = new falha();
+        $suc = new sucesso();
         $this->validaCpfEmail($conTemp);
         $query = "INSERT INTO `bddelivery`.`endereco` (`cep`, `rua`, `cidade`, `numrua`, `bairro`, `estado`) VALUES ";
         $query2 = "INSERT INTO `bddelivery`.`cliente` 
@@ -83,7 +85,7 @@ VALUES ";
         mysqli_query($conTemp, $query2) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
         $err = mysqli_error($conTemp);
         if ($err == null || !$err) {
-            echo $query;
+            $suc->suc(1);
         }
     }
     
@@ -91,7 +93,9 @@ VALUES ";
     public function alterarCliente($conTemp) {
         session_start();
         require_once "./falha.php";
+        require_once "./sucesso.php";
         $falha = new falha();
+        $suc= new sucesso();
         //$this->validaEmail($conTemp);
         $templogin = $_SESSION['login'];
                 $tempsenha = $_SESSION['senha'];
@@ -123,7 +127,7 @@ $query = "UPDATE `cliente` SET `nomecliente`='$vetvalores[nome]', `rg`='$vetvalo
         
         $err = mysqli_error($conTemp);
         if ($err == null || !$err) {
-            echo $query;
+            $suc->suc(2);
         }
         session_abort();
     }
@@ -360,19 +364,21 @@ protected function recebeValCli($falha) {
     public function excluirCliente($conTemp) {
         session_start();
         require_once "./falha.php";
+        require_once "./sucesso.php";
         $falha = new falha();
+        $suc= new sucesso();
         $login = $_SESSION['login'];
         $senha = $_SESSION['senha'];
-        echo $login + $senha;
+        
         $templogin = $login;
         $tempsenha = md5($senha);
         $query = "SELECT `endereco` FROM `cliente` WHERE `email` = '$templogin' OR `cpf` = '$templogin' AND `senha`= '$tempsenha'";
         $queryTemp = mysqli_query($conTemp, $query) or die(mysqli_error($conTemp));
         $registro = mysqli_fetch_assoc($queryTemp);
         $existe = mysqli_num_rows($queryTemp);
-
+//555555555555
         if (!$existe) {
-            echo 'não foi encontrado registro';
+            $falha->err(5);
         } else {
 
             foreach ($registro as $key => $val) {

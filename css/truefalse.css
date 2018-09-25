@@ -9,6 +9,7 @@ and open the template in the editor.
 */body{
     text-align: center;
     background-color: rgba(0,0,0, 0.3);
+    
 }
 .float-cadc{
     position: relative;
@@ -28,11 +29,11 @@ and open the template in the editor.
 .float-cadc img{
     position: relative;
     display: block;
-    width: 200px;
+    width: 130px;
     height:auto; 
     left: 50%;   
     
-    margin-left: -25%;
+    margin-left: -19%;
 }
 .float-c-bord{
     position: relative;

@@ -34,7 +34,15 @@ class menu {
     function setBtCad($btCad) {
         $this->btCad = $btCad;
     }
+    function setImgFundoPrinc($imgFundoPrinc) {
+        $this->imgFundoPrinc = $imgFundoPrinc;
+    }
 
+        function __construct() {
+            $valImg = random_int(1, 4);
+       $this->setImgFundoPrinc("img/slide/".$valImg.".png");
+    }
+    
 //            
     private function verSessao() {
         $tempAtv = $this->getValAtv(4);

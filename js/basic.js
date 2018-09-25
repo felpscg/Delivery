@@ -1,6 +1,4 @@
 var prevScrollpos = window.pageYOffset;
-
-//quando ele nÃ£o encontra o elemento ele executa a funÃ§Ã£o parcialmente e trava
 window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;
     var menuR = document.getElementById("menu").style;
@@ -9,7 +7,8 @@ window.onscroll = function () {
     var fundoDegrade = document.getElementById("fundo-psf").style;
     if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40 && prevScrollpos > currentScrollPos) {
         menuR.top = "35px";
-        menuIcon.width = "30px";
+        menuIcon.width = "32px";
+        menuIcon.top = "-0.4em";
         menuIconM.width = "auto";
         menuIconM.height = "35px";
         menuIconM.top = "0.3em";
@@ -34,19 +33,3 @@ window.onscroll = function () {
 
 
 };
-
-/*
- * 
- * 
- * 
- 
- window.onscroll = function() {
- var currentScrollPos = window.pageYOffset;
- if (prevScrollpos > currentScrollPos) {
- document.getElementById("navbar").style.top = "0";
- } else {
- document.getElementById("navbar").style.top = "-50px";
- }
- prevScrollpos = currentScrollPos;
- }
- */

@@ -37,7 +37,7 @@ li.menu-it{
     position: fixed;
     float:left;        
     margin-left:1em;
-    margin-top:0.2em;
+    margin-top:0.65em;
     width:70px;	
     display: block;
     z-index: 10;
@@ -46,7 +46,8 @@ li.menu-it{
 
 .img-dm{
     position: fixed;
-    top: 2em;
+    top: 1.8em;
+    
     margin-left: auto;
     left:7em;
     float:left; 
