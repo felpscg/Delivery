@@ -1,25 +1,10 @@
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport">
-        <!-- content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1.2"-->
-        <link rel="shortcut icon" href="img/icon/icpr.png">
-        <title>teste</title>
+    <?php
+    require_once './temp/head.phtml';
+    require_once './temp/footer.phtml';
 
-        <!--CSS-->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/camp.css">
-        <!--JS-->
-        <!-- <link type="text/javascript" href="js/basic.js"> -->
-        <script type="text/javascript" src="js/basic.js" defer="defer"></script>
-        <script charset="utf-8" type="text/javascript" src="js/cep.js" defer="defer"></script>
-        <script type="text/javascript" src="js/valcpf.js" defer="defer"></script>
-        <!--        <link type="text/javascript" href="">-->
-        <?php
-        require_once './class/menu.php';
-        ?>
-
-    </head>
+    new head();
+    ?>
 
     <body>
 
@@ -58,7 +43,7 @@
                                 <li><input name="cpf" id="cpf" onblur="TestaCPF(this.value);" type="text"/></li>
                                 <li><input name="rg" type="text"/></li>
                                 <li>
-                                    <input type="radio" name="sexo" value ="f"/>Feminino&nbsp;&nbsp;&nbsp; 
+                                    <input type="radio" name="sexo" value ="f" checked="true"/>Feminino&nbsp;&nbsp;&nbsp; 
                                     <input type="radio" name="sexo" value="m"/>Masculino
                                 </li>
                                 <li><input name="dtnasc" type="date"/></li>
@@ -98,8 +83,8 @@
                                         <input maxlength="100" size="65" name="bairro"  id="bairro" type="text"/>
                                     </li>
                                     <li><input maxlength="30" size="40" name="cidade"  id="cidade" type="text"></li>
-                                    <li><select name="uf" id="uf">
-                                            <option value="">Selecione</option>
+                                    <li><select name="uf" id="uf" >
+                                            <option value="" >Selecione</option>
                                             <option value="AC">AC</option>
                                             <option value="AL">AL</option>
                                             <option value="AM">AM</option>
@@ -159,13 +144,13 @@
                             </div>
                             <div class="campos">
                                 <ul>
-                                    <li><input  placeholder="00000-000" name="ceps" onblur="pesquisacep(this.value);" type="text"/></li>
-                                    <li><input maxlength="100" size="65" name="ruas" id="rua" type="text"/></li>
-                                    <li><input  maxlength="5" size="6" name="numeros" id="numero"  type="number"/></li>
-                                    <li><input  maxlength="5" size="6" name="comps"  id="comp" type="number"/></li>
-                                    <li><input maxlength="100" size="65" name="bairros"  id="bairro" type="text"/></li>
-                                    <li><input maxlength="30" size="40" name="cidades"  id="cidade" type="text"></li>
-                                    <li><select name="ufs" id="uf">
+                                    <li><input  placeholder="00000-000" name="ceps" onblur="pesquisaceps(this.value);" type="text"/></li>
+                                    <li><input maxlength="100" size="65" name="ruas" id="ruas" type="text"/></li>
+                                    <li><input  maxlength="5" size="6" name="numeros" id="numeros"  type="number"/></li>
+                                    <li><input  maxlength="5" size="6" name="comps"  id="comps" type="number"/></li>
+                                    <li><input maxlength="100" size="65" name="bairros"  id="bairros" type="text"/></li>
+                                    <li><input maxlength="30" size="40" name="cidades"  id="cidades" type="text"></li>
+                                    <li><select name="ufs" id="ufs">
                                             <option value="">Selecione</option>
                                             <option value="AC">AC</option>
                                             <option value="AL">AL</option>
@@ -198,6 +183,9 @@
 
                                 </ul>
                             </div>
+                            <p style="display:none;">
+                                <input name="ibges" type="text" id="ibges" size="8" />
+                            </p>
                         </fieldset>
                         <div class="n-campos">
                             <ul>
