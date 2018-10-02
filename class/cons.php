@@ -24,10 +24,11 @@ if (mysqli_num_rows($result) == 1) {
     header('location:../perfil.php');
 } else {
     unset($_SESSION['login']);
+    unset($_SESSION['nome']);
     unset($_SESSION['senha']);
-    echo "<script>";
-    echo "alert('Login ou senha incorretos');";
-    echo "history.go(-1);";
-    echo "</script>";
+    echo"<script>"
+    . "alert('Login ou Senha incorretos');"
+    . "history.go(-1);"
+    . "</script>";
 }
 ?>

@@ -3,13 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Delivery/Delivery/perfil.php</file>
-            <file>file:/C:/xampp/htdocs/Delivery/Delivery/js/valcpf.js</file>
-            <file>file:/C:/xampp/htdocs/Delivery/Delivery/index.php</file>
-            <file>file:/C:/xampp/htdocs/Delivery/Delivery/tp.php</file>
-            <file>file:/C:/xampp/htdocs/Delivery/Delivery/class/menu.php</file>
-            <file>file:/C:/xampp/htdocs/Delivery/Delivery/class/cons.php</file>
-            <file>file:/C:/xampp/htdocs/Delivery/Delivery/cad.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/tp.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/index.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/js/basic.js</file>
+            <file>file:/C:/xampp/htdocs/Delivery/cad.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/login.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/falha.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/temp/head.phtml</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/menu.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/conBD.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/css/menu.css</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/cons.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/perfil.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/clienteDAO.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/sucesso.php</file>
         </group>
     </open-files>
 </project-private>

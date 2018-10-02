@@ -1,0 +1,42 @@
+Tipos de erros
+	BD
+		-	SQL
+		-	Conexao
+		-	Dados repetidos no BD (CPF,E-mail)
+		-	Registro não encontrado
+		
+	Formulário
+		-	Campos obrigatórios
+		-	Login não efetuado(paginas que não podem ser acessadas sem o login) = perfil, cadastro de produto, cadastro de cardapio
+		
+	funçoes
+		-	Função não acessivel
+		
+	
+	
+Tipos de "sucesso"
+	Formulário
+		-	Cadastro efetuado com sucesso
+		-	Conta deletada
+		-	Dados atualizados
+		-	
+
+https://www.youtube.com/watch?v=wj5q1tpPabk
+https://www.youtube.com/watch?v=FS5rA59f2sI
+https://www.youtube.com/watch?v=z7EP-XlPTgA
+https://www.youtube.com/watch?v=hqAauanvEew
+https://www.youtube.com/watch?v=RI7f5b9P3Nw
+https://www.youtube.com/watch?v=8IHeBhbI20I
+https://www.youtube.com/watch?v=zMNE9Do1flM
+https://www.youtube.com/watch?v=7LGKgdWtrqI
+https://www.youtube.com/watch?v=Jt7uk_-cIzU
+https://www.youtube.com/watch?v=2ShDQ1lYDKs
+https://www.youtube.com/watch?v=s2u-d8XcIgM
+https://www.youtube.com/watch?v=4TimbtFMKX4
+https://www.youtube.com/watch?v=x8MRnaTR0qY
+https://www.youtube.com/watch?v=N-PU5RqL-O0
+https://www.youtube.com/watch?v=MKhguW4AGSs
+https://www.youtube.com/watch?v=tr6ralCjrxU
+https://www.youtube.com/watch?v=oiAoFyos76E
+https://www.youtube.com/watch?v=1HXdwEsOiGY
+
