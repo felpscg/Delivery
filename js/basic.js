@@ -1,3 +1,12 @@
+
+function altprod(){
+    
+    var formac = document.getElementsByName("formprod");
+    formac.action = "./altproduto.php";
+    alert("teste");
+}
+
+
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function () {
     var currentScrollPos = window.pageYOffset;

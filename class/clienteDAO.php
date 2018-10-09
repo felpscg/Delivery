@@ -102,7 +102,7 @@ class cadastrarcliente {
 //        Se exixtir algum valor no campo CEPS(cep do endereço opcional) verificar o endereco;
 
 
-        sleep(2);
+        
 //  Aguarda 2 seg para faser a consulta no BD, e lógo após da consulta verificar os erros
 
 
@@ -115,8 +115,10 @@ class cadastrarcliente {
 
 
 
-        mysqli_query($conTemp, $query3) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
-        $query2 .= ", " . mysqli_insert_id($conTemp) . ")";
+        if ($CEPS != "" || $CEPS != null) {
+            mysqli_query($conTemp, $query3) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
+        }
+            $query2 .= ", " . mysqli_insert_id($conTemp) . ")";
 
 
         mysqli_query($conTemp, $query2) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
@@ -160,6 +162,8 @@ class cadastrarcliente {
         $err = mysqli_error($conTemp);
         if ($err == null || !$err) {
             $suc->suc(2);
+            session_destroy();
+            session_abort();
         }
         session_abort();
     }
@@ -596,7 +600,7 @@ class cadastrarcliente {
             $result2 = mysqli_fetch_assoc($queryTemp);
             $existe2 = mysqli_num_rows($queryTemp);
 
-            if (!existe2) {
+            if (!$existe2) {
                 exit(0);
             } else {
                 $ends[] = $result2;

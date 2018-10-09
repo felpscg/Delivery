@@ -6,6 +6,7 @@ class sairsessao {
             session_unset($_SESSION["login"]);
             session_unset($_SESSION["senha"]);
             session_destroy();
+            session_abort();
             header('location:../index.php');
     }
 }

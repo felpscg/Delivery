@@ -34,7 +34,15 @@ class menu {
     function setBtCad($btCad) {
         $this->btCad = $btCad;
     }
+    function setImgFundoPrinc($imgFundoPrinc) {
+        $this->imgFundoPrinc = $imgFundoPrinc;
+    }
 
+        function __construct() {
+            $valImg = random_int(1, 4);
+       $this->setImgFundoPrinc("img/slide/".$valImg.".png");
+    }
+    
 //            
     private function verSessao() {
         $tempAtv = $this->getValAtv(4);
@@ -53,7 +61,7 @@ class menu {
             $this->setBtLog($temp);
             return 1;
         } elseif ((isset($_SESSION['login']) == true) and ( isset($_SESSION['senha']) == true)) {
-            $nomeUser = $_SESSION['login'];
+            $nomeUser = $_SESSION['nome'];
 
             echo "<div id ='nome-u'>Bem Vindo $nomeUser</div>";
 
@@ -137,8 +145,8 @@ class menu {
         $btLog = $this->getBtLog();
         echo "
         $imgF
-            <div id='fundo-ps'class='degradefixo'>
-    	<div id='fundo-psf'class='degradem'>
+            <div id='fundo-ps' class='degradefixo'>
+    	<div id='fundo-psf' class='degradem'>
     	<img id='img-d' class='img-d' src='$this->localLogo'/>
     	<img id='img-dm'class='img-dm' src='$this->localNome'/>
 

@@ -11,7 +11,7 @@ $login = $_POST['login'];
 $senha = $_POST['senha'];
 
 
-//codifica em base 64 e executa comando sql de busca
+
 $templogin = $login;
 $tempsenha = md5($senha);
 $result = mysqli_query($contemp, "SELECT * FROM `cliente` WHERE `email` = '$templogin' OR `cpf` = '$templogin' AND `senha`= '$tempsenha'") or die(mysqli_error($contemp));

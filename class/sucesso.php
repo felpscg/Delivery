@@ -23,6 +23,16 @@ class sucesso {
             case 3:
                 $this->deletarRegistro();
                 break;
+            case 4:
+                $this->incluirProduto();
+                break;
+            case 5:
+                $this->excluirProduto();
+                break;
+            case 6:
+                $this->alterarProduto();
+                break;
+            
 //            case 4:
 //             Login();
 //                break;
@@ -48,6 +58,7 @@ class sucesso {
         session_destroy();
         session_abort();
     }
+    
 
     public function deletarRegistro() {
         $mens = "Registro Excluido";
@@ -58,6 +69,29 @@ class sucesso {
         session_destroy();
         session_abort();
     }
+    
+    public function alterarProduto() {
+        $mens = "Produto Alterado";
+        $link = '../exibeproduto.php';
+        $mensLink = 'Produtos';
+        $this->base($mens, $link, $mensLink);
+    }
+    
+    public function incluirProduto() {
+        $mens = "Produto Incluso";
+        $link = '../exibeproduto.php';
+        $mensLink = 'Produtos';
+        $this->base($mens, $link, $mensLink);
+    }
+    public function excluirProduto() {
+        $mens = "Produto Excluido";
+        $link = '../cadproduto.php';
+        $mensLink = 'Cadastrar Produto';
+        $this->base($mens, $link, $mensLink);
+    }
+    
+    
+    
 
     private function base($mens, $link = '', $mensLink = 'Proceguir') {
         $this->cabecalho();

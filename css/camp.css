@@ -1,5 +1,76 @@
 /*
     Author  : FELIPECORREAGOMES
+
+#bt-altexc{
+    position: fixed;
+    
+    top:5em;
+    left:5em;
+    
+    float:start;
+}
+#bt-altexc .alt{
+width: 80px;
+    display: block;
+    float: end;
+
+}
+
+#bt-altexc .exc{
+    width: 80px;
+    display: block;
+
+    float: end;
+}
+
+.n-campos{
+    position: relative;
+    display: inline-block;
+    float:left; 
+    height: auto;
+    
+}
+.campos{
+    max-width: 80%;
+}
+.campos-ter{
+    position: relative;
+    top:10px;
+    left: 20px;
+    display: inline;
+    float:left; 
+    width: 20%;
+    height: 100px;
+}
+li{
+    list-style-type: none;
+}
+
+.n-campos li{
+
+    text-align: right;
+    width: 90%;
+    height: 20px;
+    border: solid 0px #333;
+    padding: 1em 1em 1em 0.56em;
+    margin:0px;
+
+}
+
+
+
+.campos li{
+
+    text-align: left;
+    width: 70%;
+    height: 20px;
+    border: solid 0px #333;
+    padding: 1em 3em 1em 0.56em;
+    margin:0px;
+}*/
+
+/*
+    Author  : FELIPECORREAGOMES
 */
 #bt-altexc{
     position: fixed;

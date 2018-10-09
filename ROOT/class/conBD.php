@@ -41,7 +41,7 @@ class conBD {
 
         
     public function conBD() {
-        $conTemp = mysqli_connect($this->getHost(), $this->getUserbd(), $this->getKey(), $this->getBd());
+        $conTemp = mysqli_connect($this->getHost(), $this->getUserbd(), $this->getKey(), $this->getBd()) or die ("Erro de Conexão");
         mysqli_set_charset($conTemp, "utf8");
         $this->setConexao($conTemp);
         return $this->getConexao();
