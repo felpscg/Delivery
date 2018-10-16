@@ -49,7 +49,7 @@ class produtoDAO {
                 break;
 
             case 4:
-                
+
                 break;
 
             case "seleciona":
@@ -61,16 +61,6 @@ class produtoDAO {
         }
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     public function incluirProduto($conTemp) {
         require_once "./falha.php";
         require_once "./sucesso.php";
@@ -81,11 +71,11 @@ class produtoDAO {
         $result = mysqli_query($conTemp, $queryverifica) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
 
 
-   /*     if (mysqli_num_rows($result) >= 2) {
-            echo "apenas dois por dia";
-            exit();
-        }
-    */
+        /*     if (mysqli_num_rows($result) >= 2) {
+          echo "apenas dois por dia";
+          exit();
+          }
+         */
 //        PRODUTO
         $query = "INSERT INTO `bddelivery`.`produto`"
                 . " (`nomeproduto`, `descproduto`, `preco`, `tamanho`, `datacad`, `marmita`) VALUES ";
@@ -98,12 +88,9 @@ class produtoDAO {
         }
     }
 
-    
-    
-    
     protected function recebeValProd($falha, $datacad) {
 //  função que recebe todos os dados do formulario e valida se os campos obrigatórios foram preenchidos 
-        $descricao= '';
+        $descricao = '';
         $tamanho = '';
         foreach ($_POST as $key => $val) {
 
@@ -134,8 +121,6 @@ class produtoDAO {
         return $values;
     }
 
-    
-    
     public function consultarProd($conTemp) {
 //        Recebe os valores do login e senha, faz a consulta no bd se ouver algum registro retorna os valores para a pagina 
         require_once "./class/falha.php";
@@ -170,27 +155,33 @@ class produtoDAO {
 
                             <div class='n-campos'>
                                 <ul>
-                                    <li>Descrição do Produto:*</li>
-                                    <li>Tipo:*</li>
+                                    <li>Nome:*</li>
+                                    <li>Preço:*</li>
                                     <li>Tamanho:</li>
-
+                                    <li>Marmita:*</li>
+                                    <li>Descrição do Produto:*</li>
 
                                 </ul>
                             </div>
-                            <div class='campos' style='max-width: 100%;'>
-                                <ul>
-                                    <li>$descproduto</li>
-                                    <li>$marmita</li>
-                                    <li>$tamanho</li>
-
-                                </ul>	
-                            </div>
-                            <div class='campos-ter'>
+                            <div class='campos'>
                                 <ul>
                                 
+<li><input name='nomeprod' maxlength='80' value='$nomeproduto' type='text'/></li>
+                            <li><input name='precoprod' value='$preco' type='text'/></li>
+                            <li><input name='tamanho' value='$tamanho' min = '1' max = '3' type='range'/></li>
+                            <li>
+                                <input type='radio' name='marmita' value ='s' checked='true'/>sim&nbsp;&nbsp;&nbsp;
+                                <input type='radio' name='marmita' value='n'/>nao
+                            </li>
+                            <li><textarea name='descricao' maxlength='250'>$descproduto</textarea></li>
+                            
+
+
+
+
                                     <input type='hidden' name='codprod' value='$codproduto'/>
                                     <input type='hidden' name='def' value='seleciona'/>
-                                    <li>Preço:* $preco</li>
+                                    
                                     <li><button type='submit' name='alterar' value='true'/>Alterar</button></li>
                                     <li><button type='submit' name='deletar' value='true'/>Deletar</button></li>
                                     
@@ -204,24 +195,14 @@ class produtoDAO {
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     public function alterarProd($conTemp) {
-        
+
         require_once "./falha.php";
         require_once "./sucesso.php";
         $falha = new falha();
         $suc = new sucesso();
-        
+
         $vetvalores = $this->recebeValProdAlt($falha);
         $query = "UPDATE `bddelivery`.`produto` SET `nomeproduto`='$vetvalores[0]', `descproduto`='$vetvalores[1]', `preco`='$vetvalores[2]', `tamanho`='$vetvalores[3]', `datacad`='$vetvalores[4]', `marmita`='$vetvalores[5]' WHERE `codproduto`=$vetvalores[6];";
 
@@ -242,52 +223,51 @@ class produtoDAO {
         $falha = new falha();
         $suc = new sucesso();
         $codproduto = $_POST['codprod'];
-        
-            
+
+
         foreach ($_POST as $key => $val) {
 
             $comando = "\$" . $key . "='" . $val . "';";
             eval($comando);
-        
-            
         }
 
-            $dataalt = date('Y-m-d');
-            $values= array($nomeprod,$descricao, $precoprod,$tamanho,$marmita,$dataalt,$codproduto);
-            
-            return $values;
+        $dataalt = date('Y-m-d');
+        $values = array($nomeprod, $descricao, $precoprod, $tamanho, $marmita, $dataalt, $codproduto);
+
+        return $values;
     }
 
-
     public function excluirProd($conTemp) {
-        
+
         require_once "./falha.php";
         require_once "./sucesso.php";
         $falha = new falha();
         $suc = new sucesso();
         $codproduto = $_POST['codprod'];
-            $queryDEL = "DELETE FROM `produto` WHERE `codproduto` = '$codproduto'";
+        $queryDEL = "DELETE FROM `produto` WHERE `codproduto` = '$codproduto'";
 
-            mysqli_query($conTemp, $queryDEL) or die(mysqli_error($conTemp) + exit(0));
-            echo $codproduto;
-            $suc->suc(3);
-        
+        mysqli_query($conTemp, $queryDEL) or die(mysqli_error($conTemp) + exit(0));
+        echo $codproduto;
+        $suc->suc(3);
     }
+
     public function selecionaAcao() {
-        if(isset($_POST["alterar"])){
-            $_REQUEST["cod"] = "ta";
-            require_once './selecFuncProd.php';
+        if (isset($_POST["alterar"])) {
+            echo "alterar";
+            require_once "./conBD.php";
+            $conexao = new conBD();
+            $conTemp = $conexao->conBD();
+            $this->alterarProd($conTemp);
         }
-        if(isset($_POST["deletar"])){
+        if (isset($_POST["deletar"])) {
             echo "deletar";
             require_once "./conBD.php";
-                $conexao = new conBD();
-                $conTemp = $conexao->conBD();
-                $this->excluirProd($conTemp);
+            $conexao = new conBD();
+            $conTemp = $conexao->conBD();
+            $this->excluirProd($conTemp);
         }
     }
-    
-    
+
 }
 
 ?>

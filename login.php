@@ -22,7 +22,7 @@
 
                         <div class='n-campos'>
                             <ul>
-                                <li>E-mail: </li>
+                                <li>CPF/E-mail: </li>
                                 <li>Senha: </li>
                             </ul>
                         </div>

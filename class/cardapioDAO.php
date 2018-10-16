@@ -178,9 +178,11 @@ $optProd2
                                 <li><input type='text' name='preco' value='$precovenda'/></li>
                             </ul>
                         </div>
-                        <input type='hidden' name='def' value=''/>
-                        <input type='submit' value='Alterar'/>
-                        <input type='submit' value='Deletar'/>
+                        <input type='hidden' name='codcardapio' value='$codcardapio'/>
+                            
+                        <input type='hidden' name='def' value='seleciona'/>
+                        <button type='submit' name='alterar' value='true'/>Alterar</button>
+                         <button type='submit' name='deletar' value='true'/>Deletar</button>
                     </form>
 
                 
@@ -265,5 +267,35 @@ $optProd2
             return $valOpt;
         }
     }
+    
+    public function excluirCard($conTemp) {
+        
+        require_once "./falha.php";
+        require_once "./sucesso.php";
+        $falha = new falha();
+        $suc = new sucesso();
+        $codcardapio = $_POST['codcardapio'];
+            $queryDEL = "DELETE FROM `cardapio` WHERE `codcardapio` = '$codcardapio'";
 
+            mysqli_query($conTemp, $queryDEL) or die(mysqli_error($conTemp) + exit(0));
+            echo $codcardapio;
+            echo $queryDEL;
+            $suc->suc(3);
+        
+    }
+    
+    
+public function selecionaAcao() {
+        if(isset($_POST["alterar"])){
+            $_REQUEST["cod"] = "ta";
+            require_once './selecFuncProd.php';
+        }
+        if(isset($_POST["deletar"])){
+            echo "deletar";
+            require_once "./conBD.php";
+                $conexao = new conBD();
+                $conTemp = $conexao->conBD();
+                $this->excluirCard($conTemp);
+        }
+    }
 }

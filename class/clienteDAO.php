@@ -67,9 +67,8 @@ class cadastrarcliente {
         $falha = new falha();
         $suc = new sucesso();
         $CEPS = $_POST['ceps'];
-        $endadicional = "";
         $this->validaCpfEmail($conTemp);
-
+        $idTempends = "null";
 
 
 
@@ -79,49 +78,38 @@ class cadastrarcliente {
 
 
         //        ENDEREÇO 2
-        $query3 = "INSERT INTO `bddelivery`.`endereco` "
+        $query2 = "INSERT INTO `bddelivery`.`endereco` "
                 . "(`cep`, `rua`, `cidade`, `numrua`, `bairro`, `estado`) VALUES ";
 
 
-        if ($CEPS != "" || $CEPS != null) {
-            $query3 .= $this->recebeValEndS($falha);
-            $endadicional = ", endereco2";
-        }
-
+//        
+//         
+//        }
 //        CLIENTE
-        $query2 = "INSERT INTO `bddelivery`.`cliente` "
-                . "(`nomecliente`, `rg`, `cpf`, `sexo`, `dtnasc`, `telefone`, `email`, `senha`,`endereco`$endadicional) VALUES ";
+        $queryCliente = "INSERT INTO `bddelivery`.`cliente` "
+                . "(`nomecliente`, `rg`, `cpf`, `sexo`, `dtnasc`, `telefone`, `email`, `senha`,`endereco`,`endereco2`) VALUES ";
 
 
 
-
-//Recebe funções de validação de CPF e E-mail
         $query .= $this->recebeValEnd($falha);
-        $query2 .= $this->recebeValCli($falha);
-
-//        Se exixtir algum valor no campo CEPS(cep do endereço opcional) verificar o endereco;
-
-
-        
-//  Aguarda 2 seg para faser a consulta no BD, e lógo após da consulta verificar os erros
-
+        if ($CEPS != "" || $CEPS != null) {
+            $query2 .= $this->recebeValEnds($falha);
+        }
+        $queryCliente .= $this->recebeValCli($falha);
 
         mysqli_query($conTemp, $query) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
 
-
-
 //        mysqli_insert_id ===== Retorna ultimo ID ou valor da PK inserido
-        $query2 .= mysqli_insert_id($conTemp);
-
-
-
+        $queryCliente .= mysqli_insert_id($conTemp);
         if ($CEPS != "" || $CEPS != null) {
-            mysqli_query($conTemp, $query3) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
+            mysqli_query($conTemp, $query2) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
+            $idTempends = mysqli_insert_id($conTemp);
         }
-            $query2 .= ", " . mysqli_insert_id($conTemp) . ")";
+        $queryCliente .= ',' . $idTempends;
+        $queryCliente .= ")";
 
-
-        mysqli_query($conTemp, $query2) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
+        echo $queryCliente;
+        mysqli_query($conTemp, $queryCliente) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
         $err = mysqli_error($conTemp);
         if ($err == null || !$err) {
             $suc->suc(1);
@@ -143,11 +131,18 @@ class cadastrarcliente {
 //Recebe funções de validação de CPF e E-mail
 //        $query .= $this->recebeValEnd($falha);
         $vetvalores = $this->recebeValCliAlt($falha);
+        $vetvaloresEnd = $this->recebeValEndAlt($falha);
         $query = "UPDATE `cliente` SET `nomecliente`='$vetvalores[nome]', `rg`='$vetvalores[rg]',  `sexo`='$vetvalores[sexo]', `dtnasc`='$vetvalores[dtnasc]', `telefone`='$vetvalores[tel]', `email`='$vetvalores[email]' WHERE `email` = '$templogin' OR `cpf` = '$templogin' AND `senha`= '$senhamd5';";
-
-        sleep(2);
-//  Aguardar 2 seg para faser a consulta no BD, e lógo após da consulta verificar os erros
+        $recebeEnd = "SELECT `endereco` FROM `cliente` WHERE `email` = '$templogin' OR `cpf` = '$templogin' AND `senha`= '$senhamd5';";
+        
         mysqli_query($conTemp, $query) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
+        $codend = mysqli_query($conTemp, $recebeEnd) or die("<h1>Erro interno-ENDERECO</h1> <br>" + $falha->err(2));
+        $registro = mysqli_fetch_assoc($codend);
+        $pKeyEnd = $registro['endereco'];
+        
+        $queryEnd = "UPDATE `bddelivery`.`endereco` SET `cep`='$vetvaloresEnd[cep]', `rua`='$vetvaloresEnd[rua]', `cidade`='$vetvaloresEnd[cidade]', `numrua`='$vetvaloresEnd[numero]', `estado`='$vetvaloresEnd[uf]', `bairro`='$vetvaloresEnd[bairro]' WHERE `codend`=$pKeyEnd;";
+echo $queryEnd;
+        mysqli_query($conTemp, $queryEnd) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
 //        mysqli_query($conTemp, $query) or die("<h1>Erro interno</h1> <br>" + mysqli_error($conTemp));
 //        $query2 .= mysqli_insert_id($conTemp) . ")";
 //        mysqli_query($conTemp, $query2) or die("<h1>Erro interno</h1> <br>" + $falha->err(2));
@@ -253,6 +248,46 @@ class cadastrarcliente {
 
             //sleep(10);
             //header("Location: ../cad.php");
+        }
+        return $values;
+    }
+
+    protected function recebeValEndAlt($falha) {
+//  função que recebe todos os dados do formulario e valida se os campos do end 1 foram preenchido para alterar
+//        Função para retornar de acordo com o update
+
+        foreach ($_POST as $key => $val) {
+
+            if ($_POST[$key] != NULL OR $_POST[$key] != "") {
+                $comando = "\$" . $key . "='" . $val . "';";
+                echo $comando . "<br>";
+
+                eval($comando);
+            }
+            if ($key == "senha") {// codifica a senha e guarda no banco
+                $senha = md5($_POST[$key]);
+            }
+        }
+
+
+        $tv = true;
+
+        /* se algum campo estiver nulo ele da erro por isso é necessario ignorar
+          com o @ e em seguida verificar cada posição do array
+         */
+
+        @$t = array($cep, $rua, $cidade, $numero, $bairro, $uf);
+        $comp = "''";
+        foreach ($t as $key => $value) {
+            if ($value === "" || $value == null)
+                $tv = false;
+        }
+
+        $values = "";
+        if ($tv === true) {
+            $values = array("cep" => $cep, "rua" => $rua, "cidade" => $cidade, "numero" => $numero, "comp" => $comp, "bairro" => $bairro, "uf" => $uf);
+        } else {
+            $falha->err(4);
         }
         return $values;
     }
@@ -532,13 +567,13 @@ class cadastrarcliente {
                             </div>
                             <div class='campos'>
                                 <ul>
-                                    <li><input  placeholder='00000-000' name='cep' value='$ceps' onblur='pesquisacep(this.value);' type='text'/></li>
-                                    <li><input maxlength='100' size='65' name='rua' id='rua' value='$ruas' type='text'/></li>
-                                    <li><input  maxlength='5' size='6' name='numero' id='numero' value='$numruas' type='number'/></li>
-                                    <li><input  maxlength='5' size='6' name='comp'  id='comp' value='$comps' type='number'/></li>
-                                    <li><input maxlength='100' size='65' name='bairro'  id='bairro' value='$bairros' type='text'/></li>
-                                    <li><input maxlength='30' size='40' name='cidade'  id='cidade' value='$cidades'type='text'></li>
-                                    <li><select name='uf' id='uf'>
+                                    <li><input  placeholder='00000-000' name='ceps' value='$ceps' onblur='pesquisaceps(this.value);' type='text'/></li>
+                                    <li><input maxlength='100' size='65' name='ruas' id='ruas' value='$ruas' type='text'/></li>
+                                    <li><input  maxlength='5' size='6' name='numeros' id='numeros' value='$numruas' type='number'/></li>
+                                    <li><input  maxlength='5' size='6' name='comps'  id='comps' value='$comps' type='number'/></li>
+                                    <li><input maxlength='100' size='65' name='bairros'  id='bairros' value='$bairros' type='text'/></li>
+                                    <li><input maxlength='30' size='40' name='cidades'  id='cidades' value='$cidades'type='text'></li>
+                                    <li><select name='ufs' id='ufs'>
                                             <option value=''>Selecione</option>
                                             <option value='AC'>AC</option>
                                             <option value='AL'>AL</option>
@@ -611,6 +646,8 @@ class cadastrarcliente {
 
     public function excluirCliente($conTemp) {
         session_start();
+        require_once "./sairsessao.php";
+        
         require_once "./falha.php";
         require_once "./sucesso.php";
         $falha = new falha();
@@ -634,17 +671,15 @@ class cadastrarcliente {
             }
             $queryend = "DELETE FROM `endereco` WHERE `codend` = '$endereco'";
             $queryDEL = "DELETE FROM `cliente` WHERE `email` = '$templogin' OR `cpf` = '$templogin'";
-            
+
             mysqli_query($conTemp, $queryDEL) or die(mysqli_error($conTemp) + exit(0));
             mysqli_query($conTemp, $queryend) or die(mysqli_error($conTemp));
-            if($endereco2 !=null || $endereco2 != ""){
+            if ($endereco2 != null || $endereco2 != "") {
                 $queryend2 = "DELETE FROM `endereco` WHERE `codend` = '$endereco2'";
-            mysqli_query($conTemp, $queryend2) or die(mysqli_error($conTemp) + exit(0));
+                mysqli_query($conTemp, $queryend2) or die(mysqli_error($conTemp) + exit(0));
             }
             $suc->suc(3);
-            session_unset();
-            session_destroy();
-            session_abort();
+            new sairsessao();
         }
     }
 

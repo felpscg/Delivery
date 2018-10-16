@@ -3,14 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Delivery/altproduto.php</file>
-            <file>file:/C:/xampp/htdocs/Delivery/tp.php</file>
-            <file>file:/C:/xampp/htdocs/Delivery/ROOT/class/cons.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/login.php</file>
             <file>file:/C:/xampp/htdocs/Delivery/class/produtoDAO.php</file>
-            <file>file:/C:/xampp/htdocs/Delivery/css/camp.css</file>
-            <file>file:/C:/xampp/htdocs/Delivery/js/basic.js</file>
-            <file>file:/C:/xampp/htdocs/Delivery/perfil.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/selecFuncProd.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/cardapioDAO.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/cad.php</file>
             <file>file:/C:/xampp/htdocs/Delivery/cadproduto.php</file>
+            <file>file:/C:/xampp/htdocs/Delivery/class/clienteDAO.php</file>
         </group>
     </open-files>
 </project-private>
