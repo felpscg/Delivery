@@ -40,7 +40,7 @@
                         <div class="campos">
                             <ul>
                                 <li><input name="nome" placeholder="" type="text"/></li>
-                                <li><input name="cpf" id="cpf" onblur="TestaCPF(this.value);" type="text"/></li>
+                                <li><input name="cpf" id="cpf" onblur="TestaCPF();" type="text"/></li>
                                 <li><input name="rg" type="text"/></li>
                                 <li>
                                     <input type="radio" name="sexo" value ="f" checked="true"/>Feminino&nbsp;&nbsp;&nbsp; 
@@ -201,7 +201,7 @@
                         </div>
                         <p>
 
-                            <input type="submit"  value="Avançar"/>
+                            <input type="button" onclick="TestaCPF();" value="Avançar"/>
                         </p>
                     </fieldset>
                 </form>

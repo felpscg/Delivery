@@ -1,6 +1,7 @@
+var idCPF = document.getElementById("cpf");
 
-function TestaCPF(CPF) {
-    var idCPF = document.getElementById("cpf");
+function TestaCPF() {
+    var CPF = idCPF.value;
     CPF = CPF.replace(/[^\d]+/g, '');
     var Soma;
     var Resto;
@@ -15,22 +16,21 @@ function TestaCPF(CPF) {
             CPF == "77777777777" ||
             CPF == "88888888888" ||
             CPF == "99999999999") {
-        return alert("CPF Invalido");
-        idCPF.value ="";
+        erroCPF(1);
     }
-    if (CPF == "" || CPF == null){
-        return alert("Digite seu CPF");
-        }
+    else if (CPF == "" || CPF == null) {
+        erroCPF(2);
+    }
     for (i = 1; i <= 9; i++)
         Soma = Soma + parseInt(CPF.substring(i - 1, i)) * (11 - i);
     Resto = (Soma * 10) % 11;
-
-    if ((Resto == 10) || (Resto == 11)){
+    
+    if ((Resto == 10) || (Resto == 11)) {
         Resto = 0;
     }
-    if (Resto != parseInt(CPF.substring(9, 10))){
-        return alert("CPF Invalido");
-        }
+    else if (Resto != parseInt(CPF.substring(9, 10))) {
+        erroCPF(1);
+    }
     Soma = 0;
     for (i = 1; i <= 10; i++)
         Soma = Soma + parseInt(CPF.substring(i - 1, i)) * (12 - i);
@@ -38,15 +38,39 @@ function TestaCPF(CPF) {
 
     if ((Resto == 10) || (Resto == 11))
         Resto = 0;
-    if (Resto != parseInt(CPF.substring(10, 11)))
-        
-    return alert("CPF Invalido");
-    else{
-    idCPF.style.border()    
+    else if (Resto != parseInt(CPF.substring(10, 11))) {
+        erroCPF(1);
+    } 
+    else {
+        idCPF.style = "border: solid 1px #0f0";
     }
-    
-    return true;
+
+    return ;
 }
 
 
+function erroCPF(val) {
+    switch (val) {
+        case 1:
+            idCPF.style = "border: solid 2px #f00";
+            idCPF.focus();
+            
+            alert("CPF Invalido");
+            return;
+            break;
 
+        case 2:
+            idCPF.style = "border: solid 2px #f00";
+            idCPF.value = "";
+            idCPF.focus();
+            
+            alert("Digite seu CPF");
+            
+            return;
+            break;
+
+        default:
+
+            break;
+    }
+}
