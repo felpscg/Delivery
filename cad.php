@@ -9,9 +9,7 @@
     <body>
 
         <?php
-        session_start();
-        session_destroy();
-        session_abort();
+        
         $obj = new menu();
         $obj->ativoMenu(1);
         ?>
@@ -21,7 +19,7 @@
         <div id="f-corpo">
             <div class="corpo" style="background-color: transparent !important;">
 
-                <form method="POST" action="class/clienteDAO.php">
+                <form method="POST" action="class/clienteDAOS.php">
                     <input type="hidden" name="def" value="1"/>
                     <fieldset class="cad"><legend><h2>Cadastro</h2></legend>
 
@@ -201,7 +199,7 @@
                         </div>
                         <p>
 
-                            <input type="button" onclick="TestaCPF();" value="Avançar"/>
+                            <input type="submit"  value="Avançar"/>
                         </p>
                     </fieldset>
                 </form>

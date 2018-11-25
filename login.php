@@ -31,6 +31,7 @@
                                 <li><input name="login"type="text"/></li>
                                 <li><input name="senha" type="password"/></li>
                                 <li><input type="submit" value="Avançar"/></li>
+								<li><a href="cad.php"><input style="cursor:pointer" type="button" value="Cadastrar"></a></li>
                             </ul>
                         </div>     
                         

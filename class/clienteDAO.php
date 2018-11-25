@@ -164,7 +164,7 @@ echo $queryEnd;
     }
 
     // função para validar CPF e E-MAIL
-    protected function validaCpfEmail($conTemp) {
+    protected function validaCpfEmail($conTemp) {//CORRETO
         require_once "./falha.php";
         $falha = new falha();
         $cpf = $_POST['cpf'];
@@ -174,7 +174,6 @@ echo $queryEnd;
             $validacpf .= "'$cpf'";
             $validaemail = "SELECT email FROM `bddelivery`.`cliente` WHERE email = ";
             $validaemail .= "'$email'";
-//      echo $valida;
             $resultemail = mysqli_query($conTemp, $validaemail) or die($falha->err(2));
             $resultcpf = mysqli_query($conTemp, $validacpf) or die($falha->err(2));
             if (mysqli_num_rows($resultcpf) >= 1 || mysqli_num_rows($resultemail) >= 1) {

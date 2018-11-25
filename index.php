@@ -55,21 +55,14 @@
         </div>
         <div id="f-corpo">
             <div class="corpo">
-                <h1>Etapas</h1><br>
+			<br><br><br>
+			
 				<div id="t">
-				Etapas para realizar a compra. 
+				<center>
+				<img src="img/text3809.png" style="positon:relative; width:900px;" />
+				</center>
 				</div>
-				
-                <div>
-					<div>Efetuar Cadastro</div>
-					<div>Selecionar itens</div>
-					<div>Concluir a compra</div>
-				</div>
-				<div>
-					<div>É necessário efetuar o cadastro para prosseguir com a compra.</div>
-					<div>Selecione os produtos que deseja comprar.</div>
-					<div>Para finalizar a compra selecione a forma de pagamento e conclua.</div>
-				</div>
+
 
             </div>
             <?php

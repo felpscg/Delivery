@@ -43,6 +43,7 @@ function TestaCPF() {
     } 
     else {
         idCPF.style = "border: solid 1px #0f0";
+        return;
     }
 
     return ;
@@ -53,24 +54,24 @@ function erroCPF(val) {
     switch (val) {
         case 1:
             idCPF.style = "border: solid 2px #f00";
-            idCPF.focus();
+//            idCPF.focus();
             
             alert("CPF Invalido");
-            return;
+            
             break;
 
         case 2:
             idCPF.style = "border: solid 2px #f00";
             idCPF.value = "";
-            idCPF.focus();
+//            idCPF.focus();
             
             alert("Digite seu CPF");
             
-            return;
+            
             break;
 
         default:
-
+return;
             break;
     }
 }

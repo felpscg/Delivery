@@ -39,7 +39,7 @@ class menu {
     }
 
         function __construct() {
-            $valImg = random_int(1, 4);
+            $valImg = rand(1, 4);
        $this->setImgFundoPrinc("img/slide/".$valImg.".png");
     }
     
@@ -84,13 +84,13 @@ class menu {
         switch ($valorAtivo) {
             case 0:
                 $this->setValAtv($at, 0);
-              session_start();
+              
                 
                 $this->verSessao();
                 break;
 
             case 1:
-                session_start();
+
                 $this->setValAtv($at, 1);
                 $temp = $this->getValAtv(1);
                 $temp2 = "<a href='cad.php'><li class='menu-it $temp'>Cadastrar</li></a>";
@@ -99,26 +99,26 @@ class menu {
 
             
             case 2:
-                session_start();
+
                 $this->setValAtv($at, 2);
                 $this->verSessao();
                 break;
 
             case 3:
-                session_start();
+
                 $this->setValAtv($at, 3);
                 $this->verSessao();
                 break;
 
             case 4:
-                session_start();
+
                 $this->setValAtv($at, 4);
                 
                 //logar
                 break;
             
             case 5:
-                session_start();
+
                 $this->setValAtv($at, 5);
                 $ValAtv = $this->getValAtv(5);
                 $crBtPerf = "<a href='perfil.php'><li class='menu-it $ValAtv'>Perfil</li></a>";
@@ -166,5 +166,5 @@ class menu {
     }
 
 }
-session_abort();
+
 ?>

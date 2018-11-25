@@ -12,7 +12,7 @@ class conBD {
     private $host="localhost";
     private $key="";
     private $userbd="root";
-//    private $key="";
+//    private $key="Felipe@CG";
 //    private $userbd="root";
     private $bd="bddelivery";
     function getConexao() {

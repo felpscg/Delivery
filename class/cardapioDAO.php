@@ -141,7 +141,7 @@ class cardapioDAO {
                     $comando = "\$" . $key . "='" . $val . "';";
                     eval($comando);
                 }
-                $optProd = $this->consultarProdExibAlt($conTemp, $produto1, $produto2='');
+                $optProd = $this->consultarProdExibAlt($conTemp, $produto1, $produto2 = '');
                 $optProd2 = $this->consultarProdExibAlt($conTemp, $produto1, $produto2);
 //                <form method='POST' name='formprod' action='altproduto.php'>
                 $conCard = "<fieldset  class='cad'><legend><h2>Cardápio</h2></legend>
@@ -150,9 +150,8 @@ class cardapioDAO {
                             <ul>
                                 <li>Produto:*</li>
                                 <li>Produto:</li>
-                                <li>Data do Cardápio:</li>
-                                <li>Preço da Venda</li>
-
+                                <li>Data do Cardápio:*<img src=''/></li>
+                                
 
                             </ul>
                         </div>
@@ -168,14 +167,14 @@ class cardapioDAO {
                                 
                                 <li>
                                     <select name='produtos' id='produtos'>
-                                        <option value=''>Selecione</option>
+                                        <option value=''>Opcional</option>
                                         
-$optProd2
+                                        $optProd2
 
                                     </select>
                                 </li>
                                 <li><input type='date' name='datacard' value='$datacardapio'/></li>
-                                <li><input type='text' name='preco' value='$precovenda'/></li>
+                                
                             </ul>
                         </div>
                         <input type='hidden' name='codcardapio' value='$codcardapio'/>
@@ -267,35 +266,34 @@ $optProd2
             return $valOpt;
         }
     }
-    
+
     public function excluirCard($conTemp) {
-        
+
         require_once "./falha.php";
         require_once "./sucesso.php";
         $falha = new falha();
         $suc = new sucesso();
         $codcardapio = $_POST['codcardapio'];
-            $queryDEL = "DELETE FROM `cardapio` WHERE `codcardapio` = '$codcardapio'";
+        $queryDEL = "DELETE FROM `cardapio` WHERE `codcardapio` = '$codcardapio'";
 
-            mysqli_query($conTemp, $queryDEL) or die(mysqli_error($conTemp) + exit(0));
-            echo $codcardapio;
-            echo $queryDEL;
-            $suc->suc(3);
-        
+        mysqli_query($conTemp, $queryDEL) or die(mysqli_error($conTemp) + exit(0));
+        echo $codcardapio;
+        echo $queryDEL;
+        $suc->suc(3);
     }
-    
-    
-public function selecionaAcao() {
-        if(isset($_POST["alterar"])){
+
+    public function selecionaAcao() {
+        if (isset($_POST["alterar"])) {
             $_REQUEST["cod"] = "ta";
             require_once './selecFuncProd.php';
         }
-        if(isset($_POST["deletar"])){
+        if (isset($_POST["deletar"])) {
             echo "deletar";
             require_once "./conBD.php";
-                $conexao = new conBD();
-                $conTemp = $conexao->conBD();
-                $this->excluirCard($conTemp);
+            $conexao = new conBD();
+            $conTemp = $conexao->conBD();
+            $this->excluirCard($conTemp);
         }
     }
+
 }
